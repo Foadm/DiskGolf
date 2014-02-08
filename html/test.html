@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+
+    <title></title>
+</head>
+<body>
+<h2></h2>
+<button>generate new element</button>
+<script>
+    $(document).ready(function(){
+    var counter = 0;
+
+    $("button").click(function() {
+        $("h2").append("<button>click me " + (++counter) + "</button>")
+    });
+
+    // With on():
+
+    $("h2").on("click", function(){
+        alert(this.innerText);
+    });
+    });
+</script>
+</body>
+</html>
