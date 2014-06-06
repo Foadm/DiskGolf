@@ -3,6 +3,7 @@
         this.playerName = playerName;
         this.score = score;
     };
+
     function listPlayers(){
         list.push = (newPlayer);
         console.log(list);
@@ -26,4 +27,3 @@
             addPlayer();
         });
     });
-

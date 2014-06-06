@@ -5,7 +5,7 @@ var browser = new Browser();
 
 describe("Index Page", function(){
     it("contains #addPlayer button", function(done){
-        browser.visit("file:///Users/foadm/Projects/DiskGolf/html/index.html", function(){
+        browser.visit("http://localhost:8000/index.html", function(){
             assert.ok(browser.success);
             assert.ok(browser.query("#addPlayer"));
             done();
