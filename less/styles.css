@@ -1,0 +1,16 @@
+.setPlayers {
+  width: 50%;
+  margin: 0 auto;
+  margin-top: 20px;
+}
+.name,
+.score {
+  background: #fdfee5;
+  margin: 10px 0 10px 0;
+}
+.name h3,
+.score h3 {
+  margin-top: 10px;
+  color: #7b7b7b;
+  text-align: center;
+}

@@ -2,20 +2,43 @@
 <html>
 <head>
     <title>Disk Golf</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <LINK href="../css/bootstrap.css" rel="stylesheet" type="text/css">
+    <LINK href="../css/styles.css" rel="stylesheet" type="text/css">
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
-    <script language="JavaScript" src="../JS/diskGolf.js"></script>
+    <script language="JavaScript" src="../JS/refactor.js"></script>
 
 </head>
 
 <body>
-<button class="button" id="addPlayer">Add PLayer</button>
-<br>
-<input class="input" id="holeNumbers">number of holes</input>
-<br>
-<button class="button" id="submit">submit</button>
-<br>
-<div class="score"></div>
+<div class="setPlayers">
+    <div class="row">
+        <div class="col-md-9">
+            <input id="playerField" class="form-control" placeholder="Player Name"> </input>
+        </div>
+        <div class="col-md-3">
+            <button type="button" id="addPlayer" class="btn btn-primary">Add Player</button>
+        </div>
+    </div>
+    <div class="players">
+        <div class="col-md-6 name">
+           <h3>Name</h3>
+           <div class="player_name"></div>
+        </div>
+        <div class="col-md-3 score">
+           <h3>score</h3>
+            <div class="player_score"></div>
+        </div>
+        <div class="col-md-3">
 
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-9">
+            <input id="holeNumbers" class="form-control" placeholder="Number of Holes"> </input>
+        </div>
+    </div>
+</div>
 </body>
 
 </html>

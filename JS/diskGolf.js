@@ -6,17 +6,14 @@ $( document ).ready(function() {
     var playerScore = [];
 
 // set up player object
-    var createPlayer = function (playerName, score) {
-        var playerInfo = {
-            playerName: playerName,
-            score: score
-        };
-        return playerInfo;
+    function CreatePlayer(playerName, score) {
+            playerName = playerName;
+            score = score;
     };
 // add players to the game
     var enterPlayer = addPlayer.click(function () {
         var newPlayer = prompt("add a player");
-        var player = createPlayer(newPlayer, 0);
+        var player = CreatePlayer(newPlayer, 0);
         numberOfPlayers += 1;
         //console.log(player.playerName + " has a score of " + player.score);
         //console.log(numberOfPlayers);
