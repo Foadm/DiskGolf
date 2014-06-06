@@ -1,0 +1,15 @@
+{
+  "name": "DiskGold",
+  "version": "0.0.1",
+  "description": "disk golf app",
+  "author": {
+    "name": "Foad Mozzafari",
+    "email": "foad.mozzafari@gmail.com"
+  },
+  "dependencies": {
+  },
+  "devDependencies": {
+    "mocha": "~0",
+    "zombie": "~0"
+  }
+}
