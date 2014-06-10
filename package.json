@@ -6,12 +6,16 @@
     "name": "Foad Mozaffari",
     "email": "foad.mozaffari@gmail.com"
   },
+    "repository" :
+    {
+        "type" : "git",
+        "url" : "https://github.com/Foadm/DiskGolf"
+    },
   "dependencies": {
   },
   "devDependencies": {
     "mocha": "1.20.1",
-    "zombie": "1.4.1",
     "servedir": "0.2.2",
-    "casperjs": "1.1.1"
+    "casperjs": "1.1.0-beta3"
   }
 }
