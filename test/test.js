@@ -1,17 +1,21 @@
-var assert = require('assert');
-var Browser = require('zombie');
+casper.test.begin('Google search retrieves 10 or more results', 5, function suite(test) {
+    casper.start("http://www.google.fr/", function() {
+        test.assertTitle("Google", "google homepage title is the one expected");
+        test.assertExists('form[action="/search"]', "main form is found");
+        this.fill('form[action="/search"]', {
+            q: "casperjs"
+        }, true);
+    });
 
-var browser = new Browser();
+    casper.then(function() {
+        test.assertTitle("casperjs - Recherche Google", "google title is ok");
+        test.assertUrlMatch(/q=casperjs/, "search term has been submitted");
+        test.assertEval(function() {
+            return __utils__.findAll("h3.r").length >= 10;
+        }, "google search for \"casperjs\" retrieves 10 or more results");
+    });
 
-describe("thing", function(){
-    it("Should fill the player name and display the players name and score", function(done){
-        browser.visit("http://localhost:8000/html/index.html").then(function(){
-            return browser.fill("#playerField", "Player 1");
-        }).then(function() {
-            return browser.pressButton("#addPlayer");
-        }).then(function() {
-            assert(browser.text(".player_name"), "Player 1");
-            return done();
-        }).fail(function(error) { console.log(error); });
+    casper.run(function() {
+        test.done();
     });
 });
