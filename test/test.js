@@ -3,23 +3,15 @@ var Browser = require('zombie');
 
 var browser = new Browser();
 
-describe("Index Page", function(){
-    it("contains #addPlayer button", function(done){
-        browser.visit("http://localhost:8000/index.html", function(){
-            assert.ok(browser.success);
-            assert.ok(browser.query("#addPlayer"));
-            done();
-        });
-    });
+describe("thing", function(){
     it("Should fill the player name and display the players name and score", function(done){
-        browser.visit("http://localhost:8000/index.html", function(){
-            browser.
-            fill("#playerField", "Player 1").
-            pressButton("#addPlayer"), function(){
-                assert.equal(browser.text(".player_name"), "Player 1");
-            };
-            assert.ok(browser.success);
-            done();
-        });
+        browser.visit("http://localhost:8000/html/index.html").then(function(){
+            return browser.fill("#playerField", "Player 1");
+        }).then(function() {
+            return browser.pressButton("#addPlayer");
+        }).then(function() {
+            assert(browser.text(".player_name"), "Player 1");
+            return done();
+        }).fail(function(error) { console.log(error); });
     });
 });

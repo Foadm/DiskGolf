@@ -1,29 +1,40 @@
 
-    var Player = function(playerName, score) {
+    var PlayerModel = function(playerName, score) {
         this.playerName = playerName;
         this.score = score;
     };
 
-    function listPlayers(){
-        list.push = (newPlayer);
-        console.log(list);
-    }
-    function addPlayer(){
-        var list = [];
-        var score = 0;
-        var newPlayer = $('#playerField').val();
-        if (newPlayer != ""){
-            newPlayer = new Player(newPlayer,score);
-            $('.player_name').append(newPlayer.playerName).append("<br>");
-            $('.player_score').append(newPlayer.score).append("<br>");
-            $('#playerField').val("");
-        }else{
+    var PlayerView = function() {
+        this.player = null;
+        this.displayPlayer = function(){
+            $('.player_name').append(this.player.playerName).append("<br>");
+            $('.player_score').append(this.player.score).append("<br>");
+        };
+        this.displayError = function(){
             $('.player_name').append('<span class="error">You must enter a valid name</span>').append("<br>");
-        }
-    }
-// add players to the game
-    $( document ).ready(function() {
-        $('#addPlayer').click(function(){
-            addPlayer();
+        };
+    };
+
+    var PlayerController = function() {
+        this.addPlayer = function (){
+            var score = 0;
+            var playerName = $('#playerField').val();
+            if (playerName !== ""){
+                this.player = new PlayerModel(playerName,score);
+                this.PlayerView.displayPlayer();
+            }else{
+                this.PlayerView.displayError();
+            }
+        };
+        var PlayerView = this;
+        $('#addPlayer').click(function() {
+            PlayerView.addPlayer();
         });
+    };
+
+    // add players to the game
+    $( document ).ready(function() {
+        new PlayerController();
     });
+
+
