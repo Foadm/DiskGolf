@@ -13,17 +13,15 @@
         this.displayError = function(){
             $('.player_name').append('<span class="error">You must enter a valid name</span>').append("<br>");
         };
-    };
 
-    var PlayerController = function() {
         this.addPlayer = function (){
             var score = 0;
             var playerName = $('#playerField').val();
             if (playerName !== ""){
                 this.player = new PlayerModel(playerName,score);
-                this.PlayerView.displayPlayer();
+                this.displayPlayer();
             }else{
-                this.PlayerView.displayError();
+                this.displayError();
             }
         };
         var PlayerView = this;
@@ -34,7 +32,7 @@
 
     // add players to the game
     $( document ).ready(function() {
-        new PlayerController();
+        new PlayerView();
     });
 
 
