@@ -3,14 +3,15 @@
   "version": "0.0.1",
   "description": "disk golf app",
   "author": {
-    "name": "Foad Mozzafari",
-    "email": "foad.mozzafari@gmail.com"
+    "name": "Foad Mozaffari",
+    "email": "foad.mozaffari@gmail.com"
   },
   "dependencies": {
   },
   "devDependencies": {
     "mocha": "1.20.1",
     "zombie": "1.4.1",
-    "servedir": "0.2.2"
+    "servedir": "0.2.2",
+    "casperjs": "~1.1.0"
   }
 }
