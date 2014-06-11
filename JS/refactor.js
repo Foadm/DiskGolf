@@ -1,17 +1,17 @@
 
-    var PlayerModel = function(playerName, score) {
-        this.playerName = playerName;
+    var PlayerModel = function(name, score) {
+        this.name = name;
         this.score = score;
 
         this.isValid = function() {
-           return this.playerName !== "";
+           return this.name !== "";
         }
     };
 
     var PlayerView = function(player) {
         this.player = player;
         this.displayPlayer = function(){
-            $('.player_name').append(this.player.playerName).append("<br>");
+            $('.player_name').append(this.player.name).append("<br>");
             $('.player_score').append(this.player.score).append("<br>");
         };
         this.displayError = function(){
@@ -25,9 +25,9 @@
     };
 
     var PlayerController = function(){
-        this.addPlayer = function(playerName){
+        this.addPlayer = function(name){
             var score = 0;
-            this.player = new PlayerModel(playerName,score);
+            this.player = new PlayerModel(name, score);
             this.view = new PlayerView(this.player);
         };
     };
