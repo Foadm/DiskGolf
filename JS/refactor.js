@@ -23,22 +23,22 @@
             this.displayError();
         }
     };
+
     var PlayerController = function(){
-        this.addPlayer = function (){
+        this.addPlayer = function(playerName){
             var score = 0;
-            var playerName = $('#playerField').val();
             this.player = new PlayerModel(playerName,score);
             this.view = new PlayerView(this.player);
         };
-        var self = this;
-        $('#addPlayer').click(function() {
-            self.addPlayer();
-        });
     };
 
     // add players to the game
     $( document ).ready(function() {
-        new PlayerController();
+        var playerController = new PlayerController();
+        $('#addPlayer').click(function() {
+            var playerName = $('#playerField').val();
+            playerController.addPlayer(playerName);
+        });
     });
 
 
