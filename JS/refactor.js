@@ -10,18 +10,12 @@
 
     var PlayerView = function(player) {
         this.player = player;
-        this.displayPlayer = function(){
-            $('.player_name').append(this.player.name).append("<br>");
-            $('.player_score').append(this.player.score).append("<br>");
-        };
-        this.displayError = function(){
-            $('.player_name').append('<span class="error">You must enter a valid name</span>').append("<br>");
-        };
-        if(this.player.isValid) {
-            this.displayPlayer();
-        } else {
-            this.displayError();
-        }
+        var $template = $("#player-template");
+        var source = $template.html();
+        var template = Handlebars.compile(source);
+        var html    = template(player);
+        $template.after(html);
+        //$('.player_name').append('<span class="error">You must enter a valid name</span>').append("<br>");
     };
 
     var PlayerController = function(){
