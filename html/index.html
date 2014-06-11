@@ -13,13 +13,16 @@
 <body>
 <div class="setPlayers">
     <div class="row">
+    <form id="enterPlayer">
         <div class="col-md-9">
             <label class="sr-only">Player Name</label>
-            <input id="playerField" class="form-control" placeholder="Player Name"> </input>
+            <input id="playerField" class="form-control" placeholder="Player Name" type="addPlayer" name="addPlayer"/>
+
         </div>
         <div class="col-md-3">
             <button type="button" id="addPlayer" class="btn btn-primary">Add Player</button>
         </div>
+    </form>
     </div>
     <div class="players">
         <div class="col-md-6 name">
