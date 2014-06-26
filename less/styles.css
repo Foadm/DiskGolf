@@ -5,7 +5,7 @@
 }
 .name,
 .score {
-  background: #fdfee5;
+  background: #F4F4F0;
   margin: 10px 0 10px 0;
 }
 .name h3,
@@ -13,4 +13,10 @@
   margin-top: 10px;
   color: #7b7b7b;
   text-align: center;
+}
+.name-field,
+.score-field {
+  background: #EFEFEB;
+  border-bottom: 1px solid #fff ;
+  padding: 5px 20px;
 }
