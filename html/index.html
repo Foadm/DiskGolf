@@ -18,7 +18,6 @@
         <div class="col-md-9">
             <label class="sr-only">Player Name</label>
             <input id="playerField" class="form-control" placeholder="Player Name" name="addPlayer"/>
-
         </div>
         <div class="col-md-3">
             <button type="button" id="addPlayer" class="btn btn-primary">Add Player</button>
@@ -45,7 +44,27 @@
             <div class="col-md-3"></div>
         </div>
         </script>
-        <div class="row"><div class="col-md-1 pull-left"><button type="button" class="btn btn-primary">Start</button></div></div>
+        <div class="row">
+            <div class="col-md-1 pull-left">
+                <button type="button" id="score-button" class="btn btn-primary">Start</button>
+            </div>
+        </div>
+        <script id="scoring-template" type="text/x-handlebars-template">
+            <div class="row">Hole #{{state}}</div>
+            <div class="row">
+                <div class="col-md-6 name-field">
+                    <div class="player_name">{{name}}</div>
+                </div>
+                <div class="col-md-3 score-field text-center">
+                    <div class="player_score">{{score}}</div>
+                </div>
+                <div class="col-md-3 score-field text-center">
+                    <label class="sr-only">Player Score</label>
+                    <input id="playerScore" class="form-control score-input" placeholder="Enter Score" name="playerScore"/>
+                </div>
+            </div>
+        </script>
+
     </div>
 </div>
 </body>
