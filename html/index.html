@@ -46,17 +46,17 @@
         </script>
         <div class="row">
             <div class="col-md-1 pull-left">
-                <button type="button" id="score-button" class="btn btn-primary">Start</button>
+                <button type="button" id="start-button" class="btn btn-primary">Start</button>
             </div>
         </div>
         <script id="scoring-template" type="text/x-handlebars-template">
-            <div class="row">Hole #{{state}}</div>
+            <div class="row hole">Hole #{{state}}</div>
             <div class="row">
                 <div class="col-md-6 name-field">
-                    <div class="player_name">{{name}}</div>
+                    <div class="scoring_name">{{name}}</div>
                 </div>
                 <div class="col-md-3 score-field text-center">
-                    <div class="player_score">{{score}}</div>
+                    <div class="scoring_score">{{score}}</div>
                 </div>
                 <div class="col-md-3 score-field text-center">
                     <label class="sr-only">Player Score</label>

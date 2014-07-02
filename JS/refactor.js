@@ -53,7 +53,7 @@
             var playerName = $('#playerField').val();
             playerController.addPlayer(playerName);
         });
-        $('#score-button').click(function() {
+        $('#start-button').click(function() {
             scoringController.updateView();
         });
     });
