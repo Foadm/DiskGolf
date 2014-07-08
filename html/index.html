@@ -50,17 +50,24 @@
             </div>
         </div>
         <script id="scoring-template" type="text/x-handlebars-template">
-            <div class="row hole">Hole #{{currentHole}}</div>
-            <div class="row">
-                <div class="col-md-6 name-field">
-                    <div class="scoring_name">{{name}}</div>
+            <div id="template-wrapper">
+                <div class="row hole">Hole #{{currentHole}}</div>
+                <div class="row">
+                    <div class="col-md-6 name-field">
+                        <div class="scoring_name">{{name}}</div>
+                    </div>
+                    <div class="col-md-3 score-field text-center">
+                        <div class="scoring_score">{{score}}</div>
+                    </div>
+                    <div class="col-md-3 score-field text-center">
+                        <form id="scoreInput">
+                            <label class="sr-only">Player Score</label>
+                            <input id="playerScore" class="form-control score-input" placeholder="Enter Score" name="playerScore"/>
+                        </form>
+                    </div>
                 </div>
-                <div class="col-md-3 score-field text-center">
-                    <div class="scoring_score">{{score}}</div>
-                </div>
-                <div class="col-md-3 score-field text-center">
-                    <label class="sr-only">Player Score</label>
-                    <input id="playerScore" class="form-control score-input" placeholder="Enter Score" name="playerScore"/>
+                <div class="row">
+                    <button type="button" id="input-button" class="btn btn-primary">Submit</button>
                 </div>
             </div>
         </script>

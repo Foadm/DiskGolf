@@ -30,35 +30,39 @@
             $('#start-button').click({param : this.player}, initializeScoring);
             function initializeScoring(e, param){
                 this.scoring = new ScoringController(e.data.param);
-                this.scoring.updateView();
+                this.scoring.initializeScoringView();
             }
         };
     };
 
     var ScoringController = function(player){
         this.player = player;
-        this.updateView = function(){
+        this.initializeScoringView = function(){
             this.scoringView = new ScoringView(this.player);
-            console.log("scoring view is instantiated");
         };
     };
 
-    var ScoringView = function(context, currentHole){
-        console.log("scoring view is called");
+    var ScoringView = function(context){
         this.context = context;
-        //this.score = score;
         var $template = $("#scoring-template");
         var source = $template.html();
         var template = Handlebars.compile(source);
         var html    = template(context);
         $template.after(html);
+        $('#input-button').click({param : this.context}, updateScoring);
+        function updateScoring(e,param){
+            var currentScore = parseInt($('.score-input').val(), 10);
+            context.score = currentScore + context.score;
+            context.currentHole = context.currentHole + 1;
+            console.log(context.score + " " + context.currentHole);
+            $('#template-wrapper').remove();
+            this.scoringView = new ScoringView(context);
+        }
     };
 
     // add players to the game
     $( document ).ready(function() {
         var playerController = new PlayerController();
-        //var scoringController = new ScoringController();
-
         $('#addPlayer').click(function() {
             var playerName = $('#playerField').val();
             playerController.addPlayer(playerName);

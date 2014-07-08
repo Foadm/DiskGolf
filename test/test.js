@@ -9,11 +9,11 @@ casper.test.begin('Disk Golf App', function suite(test) {
         test.assertSelectorHasText('.hole', 'Hole');
         test.assertSelectorHasText('.scoring_name', 'Player1');
         test.assertSelectorHasText('.scoring_score', '0');
-        if (this.exists('#playerScore')) {
-            this.echo('found #playerScore', 'INFO');
-        } else {
-            this.echo('#playerScore not found', 'ERROR');
-        }
+        this.fill('#scoreInput', {'playerScore': '5'});
+        this.click('#input-button');
+        test.assertSelectorHasText('.hole', 'Hole #1');
+        test.assertSelectorHasText('.scoring_score', '5');
+
         test.done();
     });
 });
