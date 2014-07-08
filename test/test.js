@@ -1,3 +1,10 @@
+casper.on("page.error", function(msg, backtrace) {
+    this.echo("PAGE ERROR: " + msg);
+    for(var i=0, line; line = backtrace[i]; i++) {
+        this.echo(line.file + ":" + line.line);
+    }
+    this.echo("");
+});
 casper.test.begin('Disk Golf App', function suite(test) {
     casper.start("http://localhost:8000/html/index.html")
     casper.run(function() {

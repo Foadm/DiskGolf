@@ -9,29 +9,27 @@
         }
     };
 
-    var PlayerView = function(context) {
+    var PlayerView = function(context, controller) {
         this.context = context;
+        this.controller = controller;
         var $template = $("#player-template");
         var source = $template.html();
         var template = Handlebars.compile(source);
-        var html    = template(context);
+        var html = template(context);
         $template.after(html);
-        //$('.player_name').append('<span class="error">You must enter a valid name</span>').append("<br>");
+        $('#start-button').click(function() { controller.initializeScoring(); });
     };
 
     var PlayerController = function(){
-        //this.playerArray = [];
         this.addPlayer = function(name){
             var score = 0;
             var currentHole = 0;
             this.player = new PlayerModel(name, score, currentHole);
-            this.view = new PlayerView(this.player);
-            //this.playerArray.push(name);
-            $('#start-button').click({param : this.player}, initializeScoring);
-            function initializeScoring(e, param){
-                this.scoring = new ScoringController(e.data.param);
-                this.scoring.initializeScoringView();
-            }
+            this.view = new PlayerView(this.player, this);
+        };
+        this.initializeScoring = function(){
+            this.scoring = new ScoringController(this.player);
+            this.scoring.initializeScoringView();
         };
     };
 
@@ -54,7 +52,6 @@
             var currentScore = parseInt($('.score-input').val(), 10);
             context.score = currentScore + context.score;
             context.currentHole = context.currentHole + 1;
-            console.log(context.score + " " + context.currentHole);
             $('#template-wrapper').remove();
             this.scoringView = new ScoringView(context);
         }
