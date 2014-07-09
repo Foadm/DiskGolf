@@ -41,6 +41,8 @@
     };
 
     var ScoringView = function(context){
+        $('#template-wrapper').remove();
+        $('.intro').hide();
         this.context = context;
         var $template = $("#scoring-template");
         var source = $template.html();
@@ -52,7 +54,6 @@
             var currentScore = parseInt($('.score-input').val(), 10);
             context.score = currentScore + context.score;
             context.currentHole = context.currentHole + 1;
-            $('#template-wrapper').remove();
             this.scoringView = new ScoringView(context);
         }
     };

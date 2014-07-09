@@ -5,10 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
     <LINK href="../css/bootstrap.css" rel="stylesheet" type="text/css">
     <LINK href="../css/styles.css" rel="stylesheet" type="text/css">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="http://code.jquery.com/mobile/1.2.0/jquery.mobile-1.2.0.min.css" />
-    <script src="http://code.jquery.com/jquery-1.8.2.min.js"></script>
-    <script src="http://code.jquery.com/mobile/1.2.0/jquery.mobile-1.2.0.min.js"></script>
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/handlebars.js/1.3.0/handlebars.js"></script>
     <script language="JavaScript" src="../JS/refactor.js"></script>
@@ -17,66 +13,69 @@
 
 <body>
 <div class="setPlayers">
-    <div class="row">
-    <form id="enterPlayer">
-        <div class="col-md-9">
-            <label class="sr-only">Player Name</label>
-            <input id="playerField" class="form-control" placeholder="Player Name" name="addPlayer"/>
-        </div>
-        <div class="col-md-3">
-            <button type="button" id="addPlayer" class="btn btn-primary">Add Player</button>
-        </div>
-    </form>
-    </div>
-    <div class="players">
-        <div class="row">
-            <div class="col-md-6 name">
-                <h3>Name</h3>
-            </div>
-            <div class="col-md-3 score">
-                <h3>score</h3>
-            </div>
-        </div>
-        <script id="player-template" type="text/x-handlebars-template">
-        <div class="row">
-            <div class="col-md-6 name-field">
-               <div class="player_name">{{name}}</div>
-            </div>
-            <div class="col-md-3 score-field text-center">
-                <div class="player_score">{{score}}</div>
-            </div>
-            <div class="col-md-3"></div>
-        </div>
-        </script>
-        <div class="row">
-            <div class="col-md-1 pull-left">
-                <button type="button" id="start-button" class="btn btn-primary">Start</button>
-            </div>
-        </div>
-        <script id="scoring-template" type="text/x-handlebars-template">
-            <div id="template-wrapper">
-                <div class="row hole">Hole #{{currentHole}}</div>
-                <div class="row">
-                    <div class="col-md-6 name-field">
-                        <div class="scoring_name">{{name}}</div>
-                    </div>
-                    <div class="col-md-3 score-field text-center">
-                        <div class="scoring_score">{{score}}</div>
-                    </div>
-                    <div class="col-md-3 score-field text-center">
-                        <form id="scoreInput">
-                            <label class="sr-only">Player Score</label>
-                            <input id="playerScore" class="form-control score-input" placeholder="Enter Score" name="playerScore"/>
-                        </form>
-                    </div>
-                </div>
-                <div class="row">
-                    <button type="button" id="input-button" class="btn btn-primary">Submit</button>
-                </div>
-            </div>
-        </script>
+    <div class="intro">
+        <form id="enterPlayer">
+                <label class="sr-only">Player Name</label>
+                <input id="playerField" class="form-control" style="width:89%;" placeholder="Player Name" name="addPlayer"/>
+                <button type="button" id="addPlayer" class="btn btn-primary" style="width:10%;">Add Player</button>
+        </form>
+    <script id="player-template" type="text/x-handlebars-template">
+        <table class="table table-hover">
+            <thead>
+            <tr>
+                <th>Name</th>
+                <th>Score</th>
+                <th>Total</th>
+            </tr>
+            </thead>
+            <tfoot>
+            <tr>
+                <th>
+                    <button type="button" id="start-button" class="btn btn-primary">Start</button>
+                </th>
+                <th></th>
+                <th></th>
+            </tr>
+            </tfoot>
+            <tbody>
+            <tr>
+                <td class="player_name">{{name}}</td>
+                <td>{{score}}</td>
+                <td>{{score}}</td>
 
+            </tbody>
+        </table>
+    </script>
     </div>
+
+    <script id="scoring-template" type="text/x-handlebars-template">
+        <div id="template-wrapper">
+        <div class="row hole">Hole #{{currentHole}}</div>
+        <table class="table table-hover">
+            <thead>
+            <tr>
+                <th>Name</th>
+                <th>Total Score</th>
+                <th>New Round Score</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td class="scoring_name">{{name}}</td>
+                <td class="scoring_score">{{score}}</td>
+                <td class="score-field">
+                    <form id="scoreInput">
+                        <label class="sr-only">Player Score</label>
+                        <input id="playerScore" class="form-control score-input" style="width:30%" placeholder="Enter Score" name="playerScore"/>
+                        <button type="button" id="input-button" class="btn btn-primary">Submit</button>
+                    </form>
+                </td>
+
+            </tbody>
+
+        </table>
+        </div>
+    </script>
 </div>
 </body>
 

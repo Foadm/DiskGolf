@@ -1,22 +1,14 @@
 .setPlayers {
-  width: 50%;
   margin: 0 auto;
-  margin-top: 20px;
+  margin: 2%;
 }
-.name,
-.score {
-  background: #F4F4F0;
-  margin: 10px 0 10px 0;
+.form-control {
+  display: inline;
 }
-.name h3,
-.score h3 {
-  margin-top: 10px;
-  color: #7b7b7b;
+.hole {
+  background: #000;
+  color: #ccc;
   text-align: center;
-}
-.name-field,
-.score-field {
-  background: #EFEFEB;
-  border-bottom: 1px solid #fff ;
-  padding: 5px 20px;
+  font-size: 1.5em;
+  padding: 6px;
 }
