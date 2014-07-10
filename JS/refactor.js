@@ -36,26 +36,27 @@
     var ScoringController = function(player){
         this.player = player;
         this.initializeScoringView = function(){
-            this.scoringView = new ScoringView(this.player);
+            this.scoringView = new ScoringView(this.player, this);
+        };
+        this.scoring = function(){
+            var currentScore = parseInt($('.score-input').val(), 10);
+            player.score = currentScore + player.score;
+            player.currentHole = player.currentHole + 1;
+            player.scoringView = new ScoringView(player);
         };
     };
 
-    var ScoringView = function(context){
+    var ScoringView = function(context, controller){
         $('#template-wrapper').remove();
         $('.intro').hide();
         this.context = context;
+        this.controller = controller;
         var $template = $("#scoring-template");
         var source = $template.html();
         var template = Handlebars.compile(source);
         var html    = template(context);
         $template.after(html);
-        $('#input-button').click({param : this.context}, updateScoring);
-        function updateScoring(e,param){
-            var currentScore = parseInt($('.score-input').val(), 10);
-            context.score = currentScore + context.score;
-            context.currentHole = context.currentHole + 1;
-            this.scoringView = new ScoringView(context);
-        }
+        $('#input-button').click(function() { controller.scoring(); });
     };
 
     // add players to the game
