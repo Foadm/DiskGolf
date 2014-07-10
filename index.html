@@ -1,13 +1,13 @@
 <!DOCTYPE html>
-<html>
+<html xmlns="http://www.w3.org/1999/html">
 <head>
     <title>Disk Golf</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-    <LINK href="../css/bootstrap.css" rel="stylesheet" type="text/css">
-    <LINK href="../css/styles.css" rel="stylesheet" type="text/css">
+    <LINK href="css/bootstrap.css" rel="stylesheet" type="text/css">
+    <LINK href="css/styles.css" rel="stylesheet" type="text/css">
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/handlebars.js/1.3.0/handlebars.js"></script>
-    <script language="JavaScript" src="../JS/refactor.js"></script>
+    <script language="JavaScript" src="js/diskGolf.js"></script>
 
 </head>
 
@@ -17,7 +17,7 @@
         <form id="enterPlayer">
                 <label class="sr-only">Player Name</label>
                 <input id="playerField" class="form-control" style="width:89%;" placeholder="Player Name" name="addPlayer"/>
-                <button type="button" id="addPlayer" class="btn btn-primary" style="width:10%;">Add Player</button>
+                <input type="submit" id="addPlayer" class="btn btn-primary" value = "Add Player" style="width:10%;" />
         </form>
     <script id="player-template" type="text/x-handlebars-template">
         <table class="table table-hover">
@@ -31,7 +31,9 @@
             <tfoot>
             <tr>
                 <th>
-                    <button type="button" id="start-button" class="btn btn-primary">Start</button>
+                    <form id="start">
+                        <input type="submit" id="start-button" class="btn btn-primary" value="Start"/>
+                    </form>
                 </th>
                 <th></th>
                 <th></th>
@@ -67,7 +69,7 @@
                     <form id="scoreInput">
                         <label class="sr-only">Player Score</label>
                         <input id="playerScore" class="form-control score-input" style="width:30%" placeholder="Enter Score" name="playerScore"/>
-                        <button type="button" id="input-button" class="btn btn-primary">Submit</button>
+                        <input type="submit" id="input-button" class="btn btn-primary" value="Submit" />
                     </form>
                 </td>
 
