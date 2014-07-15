@@ -9,61 +9,90 @@
         }
     };
 
-    var PlayerView = function(context, controller) {
-        this.context = context;
+    var PlayerView = function(playerArray, controller, i) {
+        this.playerArray = playerArray;
         this.controller = controller;
+        this.context = playerArray[i];
         var $template = $("#player-template");
         var source = $template.html();
         var template = Handlebars.compile(source);
-        var html = template(context);
+        var html = template(this.context);
         $template.after(html);
-        $( "#start" ).submit(function(e) {
-            var playerName = $('#playerField').val();
-            controller.initializeScoring();
-            e.preventDefault();
-        });
     };
 
     var PlayerController = function(){
+        var playerArray = [];
+        var i = -1;
         this.addPlayer = function(name){
             var score = 0;
             var currentHole = 1;
+            i = i + 1;
             this.player = new PlayerModel(name, score, currentHole);
-            this.view = new PlayerView(this.player, this);
+            playerArray.push(this.player);
+            this.view = new PlayerView(playerArray, this, i);
         };
         this.initializeScoring = function(){
-            this.scoring = new ScoringController(this.player);
+            this.scoring = new ScoringController(playerArray);
             this.scoring.initializeScoringView();
         };
     };
 
-    var ScoringController = function(player){
-        this.player = player;
+    var ScoringController = function(playerArray){
+        this.playerArray = playerArray;
         this.initializeScoringView = function(){
-            this.scoringView = new ScoringView(this.player, this);
+            this.scoringView = new ScoringView(this.playerArray, this);
+            this.currenthole = new currentHoleView(this.playerArray[0]);
         };
         this.scoring = function(currentScore){
-            player.score = currentScore + player.score;
-            player.currentHole = player.currentHole + 1;
-            player.scoringView = new ScoringView(player, this);
+            currentScore.reverse();
+            for (i=0; i < currentScore.length; i++){
+                this.playerArray[i].score = playerArray[i].score + currentScore[i];
+                this.playerArray[i].currentHole = this.playerArray[i].currentHole + 1;
+            }
+            this.updatedView = new ScoringView(this.playerArray, this);
+            this.currenthole = new currentHoleView(this.playerArray[0]);
         };
+        var self =this;
+        $( "#scoreSubmit" ).submit(function(e) {
+            console.log('clicked');
+            var scoreArray = [];
+            $('.score-input').each(function(){
+                var currentScore = parseInt($(this).val(), 10);
+                scoreArray.push(currentScore);
+            });
+            self.scoring(scoreArray);
+            e.preventDefault();
+        });
     };
 
     var ScoringView = function(player, controller){
-        $('#template-wrapper').remove();
+        $('#template-wrapper').show();
+        if ($('.scoring-view')){
+            $('.scoring-view').remove();
+        }else{
+            $('.scoring-view').show();
+        }
         $('.intro').hide();
         this.player = player;
         this.controller = controller;
-        var $template = $("#scoring-template");
+        for (i = 0; i < this.player.length; i++){
+            player = this.player[i];
+            var $template = $("#scoring-template");
+            var source = $template.html();
+            var template = Handlebars.compile(source);
+            var html    = template(player);
+            $template.after(html);
+        }
+    };
+    var currentHoleView = function(player){
+        if ($('.hole')){
+            $('.hole').remove();
+        }
+        var $template = $("#currentHole");
         var source = $template.html();
         var template = Handlebars.compile(source);
         var html    = template(player);
         $template.after(html);
-        $( "#scoreInput" ).submit(function(e) {
-            var currentScore = parseInt($('.score-input').val(), 10);
-            controller.scoring(currentScore);
-            e.preventDefault();
-        });
     };
 
     // add players to the game
@@ -72,6 +101,10 @@
         $( "#enterPlayer" ).submit(function(e) {
             var playerName = $('#playerField').val();
             playerController.addPlayer(playerName);
+            e.preventDefault();
+        });
+        $( "#start" ).submit(function(e) {
+            playerController.initializeScoring();
             e.preventDefault();
         });
     });
