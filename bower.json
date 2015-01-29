@@ -1,0 +1,23 @@
+{
+  "name": "DiskGolf",
+  "version": "0.0.0",
+  "homepage": "https://github.com/Foadm/DiskGolf",
+  "authors": [
+    "Foad Mozaffari <foad.mozaffari@gmail.com>"
+  ],
+  "description": "disk golf app",
+  "main": "index.html",
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "devDependencies": {
+    "handlebars": "~2.0.0",
+    "jquery": "~2.1.3",
+    "gulp": "~3.8.10"
+  }
+}

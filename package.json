@@ -1,20 +1,25 @@
 {
   "name": "DiskGolf",
-  "version": "0.0.1",
-  "description": "disk golf app",
-  "author": {
-    "name": "Foad Mozaffari",
-    "email": "foad.mozaffari@gmail.com"
+  "version": "1.0.0",
+  "description": "Disk Golf App",
+  "main": "index.html",
+  "directories": {
+    "test": "test"
   },
-  "repository" : {
-      "type" : "git",
-      "url" : "https://github.com/Foadm/DiskGolf"
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "dependencies": {
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Foadm/DiskGolf"
   },
+  "author": "Foad Mozaffari",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Foadm/DiskGolf/issues"
+  },
+  "homepage": "https://github.com/Foadm/DiskGolf",
   "devDependencies": {
-    "mocha": "1.20.1",
-    "servedir": "0.2.2",
-    "casperjs": "1.1.0-beta3"
+    "gulp-connect": "^2.2.0"
   }
 }
