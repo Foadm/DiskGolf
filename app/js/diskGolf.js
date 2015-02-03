@@ -29,8 +29,11 @@
             i = i + 1;
             this.player = new PlayerModel(name, score, currentHole);
             playerArray.push(this.player);
-            this.view = new PlayerView(playerArray, this, i);
+            this.runPlayerView(playerArray);
         };
+        this.runPlayerView = function(playerArray){
+            this.view = new PlayerView(playerArray, this, i);
+        }
         this.initializeScoring = function(){
             this.scoring = new ScoringController(playerArray);
             this.scoring.initializeScoringView();

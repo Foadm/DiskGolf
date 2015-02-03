@@ -10,7 +10,8 @@ describe('PlayerModel', function(){
 describe('PlayerController',function(){
     it('should add a new player model', function(){
         var testPlayerController = new PlayerController();
-        testPlayerController.addPlayer('player1');
-        expect(testPlayerController.player).toBeDefined()
+        spyOn(testPlayerController, 'runPlayerView');
+        testPlayerController.addPlayer("player1");
+        expect(testPlayerController.runPlayerView).toHaveBeenCalled();
     });
 });
