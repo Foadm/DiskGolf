@@ -12,7 +12,6 @@ describe('PlayerController',function(){
         var testPlayerController = new PlayerController();
         spyOn(testPlayerController, "addPlayer");
         testPlayerController.addPlayer('player1');
-        //expect(testPlayerController.playerArray).toBeDefined();
-        console.log(testPlayerController.addPlayer);
+        expect(testPlayerController.player).toBeDefined()
     });
 });
