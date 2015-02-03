@@ -7,3 +7,12 @@ describe('PlayerModel', function(){
         expect(model.currentHole).toBe(1);
    });
 });
+describe('PlayerController',function(){
+    it('should add a new player model', function(){
+        var testPlayerController = new PlayerController();
+        spyOn(testPlayerController, "addPlayer");
+        testPlayerController.addPlayer('player1');
+        //expect(testPlayerController.playerArray).toBeDefined();
+        console.log(testPlayerController.addPlayer);
+    });
+});
